@@ -1,4 +1,4 @@
-const converters = {
+export const converters = {
   toCelsius(fahrenheit) {
     return ((fahrenheit - 32) * 5) / 9;
   },
