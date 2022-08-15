@@ -2,7 +2,7 @@ import { defineParameterType } from "@cucumber/cucumber";
 
 defineParameterType({
   name: "units",
-  regexp: /C|F|Celsius|Fahrenheit/,
+  regexp: /\s?C|\s?F|\s?Celsius|\s?Fahrenheit/,
   transformer(valueOfIncomingUnitsThatMightStartWithC) {
     return valueOfIncomingUnitsThatMightStartWithC.startsWith("C")
       ? "toCelsius"

@@ -2,7 +2,7 @@ import { Given, Then, When } from "@cucumber/cucumber";
 import { expect } from "expect";
 import tryConvert from "../../app/index.js";
 
-Given("I have a temperature of {int}° {units}", function (temp2Convert, _) {
+Given("I have a temperature of {float}°{units}", function (temp2Convert, _) {
   // Bind "temp2Convert" to the global this scope so it can be used in subsequent steps.
   // 'this' WILL NOT WORK properly when used in an arrow function.
   this.temp2Convert = temp2Convert;
@@ -18,7 +18,7 @@ When(
   }
 );
 
-Then("I see {float}° {units}", function (expected, _) {
+Then("I see {float}°{units}", function (expected, _) {
   const expectHelper = () => {
     expect(this.convertedTemp).toBe(expected.toString());
   };
@@ -26,9 +26,7 @@ Then("I see {float}° {units}", function (expected, _) {
   expectHelper();
 });
 
-Given("I have non-numerical input", function () {
-  this.temp2Convert = false && "string"; // QUESTION FOR MONDAY does this just eval to false or does it "short circuit" and test both? Should the 'given' statements be more specific? > Given I have a boolean / given I have a string etc
-});
+Given("I have non-numerical input", () => {});
 
 Then('I "see" a blank string', function () {
   // Write code here that turns the phrase above into concrete actions
